@@ -1,0 +1,6 @@
+{
+  "name": "ScaleProp — Marketing Inmobiliario de Alto Volumen",
+  "description": "Infraestructura tecnológica y embudos de alta conversión para desarrolladoras inmobiliarias y brokers de alto volumen.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
