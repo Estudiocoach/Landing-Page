@@ -25,6 +25,7 @@ export const ConversionSection: React.FC<ConversionSectionProps> = ({
   const [whatsapp, setWhatsapp] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedCity, setSubmittedCity] = useState<string | null>(null);
 
   useEffect(() => {
@@ -58,8 +59,9 @@ export const ConversionSection: React.FC<ConversionSectionProps> = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setError(null);
 
     if (
@@ -86,8 +88,44 @@ export const ConversionSection: React.FC<ConversionSectionProps> = ({
       return;
     }
 
-    fireConversionTracking(instagram.trim(), city.trim());
-    setSubmittedCity(city.trim());
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: fullName.trim(),
+          businessActivity: businessActivity.trim(),
+          city: city.trim(),
+          instagram: instagram.trim(),
+          whatsapp: whatsapp.trim(),
+          email: email.trim(),
+          sourcePage: typeof window !== 'undefined' ? window.location.pathname : '/',
+        }),
+      });
+
+      const payload = (await response.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+      } | null;
+
+      if (!response.ok || !payload?.ok) {
+        setError(
+          payload?.error ||
+            'No se pudo enviar la solicitud en este momento. Por favor intenta nuevamente.'
+        );
+        return;
+      }
+
+      fireConversionTracking(instagram.trim(), city.trim());
+      setSubmittedCity(city.trim());
+    } catch {
+      setError('Error de conexión con el servidor. Verifica tu conexión e intenta nuevamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -250,10 +288,11 @@ export const ConversionSection: React.FC<ConversionSectionProps> = ({
 
                   <button
                     type="submit"
-                    className="mt-2 w-full h-14 inline-flex items-center justify-center gap-2 bg-[#0056FF] px-6 text-[16px] font-bold text-white rounded-lg transition-colors duration-150 hover:bg-[#0044CC] active:translate-y-px cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0056FF]"
+                    disabled={isSubmitting}
+                    className="mt-2 w-full h-14 inline-flex items-center justify-center gap-2 bg-[#0056FF] px-6 text-[16px] font-bold text-white rounded-lg transition-colors duration-150 hover:bg-[#0044CC] active:translate-y-px cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0056FF]"
                   >
-                    <span>Verificar disponibilidad</span>
-                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                    <span>{isSubmitting ? 'Enviando solicitud...' : 'Verificar disponibilidad'}</span>
+                    {!isSubmitting && <ArrowRight className="h-5 w-5" aria-hidden="true" />}
                   </button>
 
                   <p className="text-[12px] text-[#6B7280] text-center pt-1">

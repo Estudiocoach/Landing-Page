@@ -80,11 +80,11 @@ export const ClientSpotlightSection: React.FC<ClientSpotlightSectionProps> = ({ 
                   <div className="relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-[16/10] mb-5">
                     {!projectImgFailed ? (
                       <img
-                        src="/src/assets/images/hero_real_estate_tower_1795359306961.jpg"
+                        src="/src/assets/images/consultant_strategy_session_1795454265660.jpg"
                         alt="Consultoría PYMES GROW"
                         referrerPolicy="no-referrer"
                         onError={() => setProjectImgFailed(true)}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-center"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-neutral-400">

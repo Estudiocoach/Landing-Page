@@ -164,13 +164,13 @@ export const AgencyServicesSection: React.FC<AgencyServicesSectionProps> = ({ on
                     <div className="sm:col-span-5 relative min-h-[175px] bg-neutral-900">
                       {!heroImgFailed ? (
                         <img
-                          src="/src/assets/images/hero_real_estate_tower_1795359306961.jpg"
-                          alt="Vista previa de edificio en pozo"
+                          src="/src/assets/images/consultant_personal_brand_1795454266756.jpg"
+                          alt="Consultor de negocios y asesor comercial"
                           width={640}
                           height={360}
                           referrerPolicy="no-referrer"
                           onError={() => setHeroImgFailed(true)}
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-cover object-top"
                         />
                       ) : (
                         <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-white">
@@ -215,13 +215,13 @@ export const AgencyServicesSection: React.FC<AgencyServicesSectionProps> = ({ on
                     <div className="relative h-32 bg-neutral-900">
                       {!heroImgFailed ? (
                         <img
-                          src="/src/assets/images/hero_real_estate_tower_1795359306961.jpg"
-                          alt="Anuncio segmentado de desarrollo inmobiliario"
+                          src="/src/assets/images/realestate_agent_advisory_1795454266478.jpg"
+                          alt="Agente inmobiliario presentando cartera de inversión a cliente"
                           width={640}
                           height={360}
                           referrerPolicy="no-referrer"
                           onError={() => setHeroImgFailed(true)}
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-cover object-center"
                         />
                       ) : (
                         <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-white">

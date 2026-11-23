@@ -152,11 +152,11 @@ export const ProductsPage: React.FC = () => {
                       <div className="sm:col-span-5 relative min-h-[190px] bg-neutral-900">
                         {!heroImgFailed ? (
                           <img
-                            src="/src/assets/images/hero_real_estate_tower_1795359306961.jpg"
+                            src="/src/assets/images/consultant_personal_brand_1795454266756.jpg"
                             alt="Marca personal para Consultores"
                             referrerPolicy="no-referrer"
                             onError={() => setHeroImgFailed(true)}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover object-top"
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-white">
@@ -229,11 +229,11 @@ export const ProductsPage: React.FC = () => {
                       <div className="relative h-36 bg-neutral-900">
                         {!heroImgFailed ? (
                           <img
-                            src="/src/assets/images/hero_real_estate_tower_1795359306961.jpg"
-                            alt="Anuncio de consultoría y productos"
+                            src="/src/assets/images/realestate_agent_advisory_1795454266478.jpg"
+                            alt="Agente inmobiliario y consultor asesorando clientes"
                             referrerPolicy="no-referrer"
                             onError={() => setHeroImgFailed(true)}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover object-center"
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-white">

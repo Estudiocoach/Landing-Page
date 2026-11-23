@@ -268,13 +268,13 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onApplyClick }) => {
             <div className="lg:col-span-5 min-h-[240px] lg:min-h-[340px] bg-neutral-900 relative">
               {!imgFailed ? (
                 <img
-                  src="/src/assets/images/hero_real_estate_tower_1795359306961.jpg"
+                  src="/src/assets/images/consultant_strategy_session_1795454265660.jpg"
                   alt={featuredArticle.title}
                   width={800}
                   height={450}
                   referrerPolicy="no-referrer"
                   onError={() => setImgFailed(true)}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-center"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-white">

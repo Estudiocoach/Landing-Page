@@ -22,7 +22,11 @@ function getRouteFromPath(pathname: string): ActiveRoute {
   return 'home';
 }
 
-export default function App() {
+interface AppProps {
+  onLoginClick?: () => void;
+}
+
+export default function App({ onLoginClick }: AppProps = {}) {
   const [activeRoute, setActiveRoute] = useState<ActiveRoute>(() =>
     getRouteFromPath(window.location.pathname)
   );
@@ -134,7 +138,7 @@ export default function App() {
         )}
       </main>
 
-      <Footer />
+      <Footer onLoginClick={onLoginClick} />
     </div>
   );
 }
